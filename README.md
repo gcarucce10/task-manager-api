@@ -1,6 +1,6 @@
 # Task Manager API 🚀
 
-API CRUD de tarefas em TypeScript com Docker, perfeita para portfólios.
+API CRUD de tarefas em TypeScript com Docker.
 
 ## ✨ Funcionalidades
 - Criar, listar, atualizar e deletar tarefas
