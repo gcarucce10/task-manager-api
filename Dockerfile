@@ -9,6 +9,8 @@ RUN npm install
 COPY . .
 RUN npm run build
 
+COPY src/data/users.json ./dist/data/users.json
+
 # Estágio de produção
 FROM node:18-alpine
 
