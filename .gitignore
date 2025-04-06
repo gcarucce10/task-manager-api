@@ -1,7 +1,13 @@
-node_modules
-dist
+# Ignorar arquivos de configuração sensíveis
 .env
-.DS_Storenode_modules
-dist
-.env
-*.log
+docker-compose.yml
+Dockerfile
+
+# Ignorar a pasta de migrações do Prisma
+prisma/migrations/
+
+# Ignorar a pasta node_modules
+node_modules/
+
+# Ignorar arquivos de build
+dist/
