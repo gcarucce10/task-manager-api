@@ -1,20 +1,21 @@
 import express from 'express';
 import { Router } from 'express';
-import { 
-  getAllTasks, 
-  getTask, 
-  createTask, 
-  updateTask, 
-  deleteTask 
+import {
+  getTasks,
+  createTask,
+  updateTask,
+  deleteTask,
+  getTaskById,
 } from '../controllers/taskController';
-import { verifyToken } from '../middlewares/auth';
+import { authenticate } from '../middleware/authMiddleware';
 
 const router = express.Router();
 
-router.get('/', verifyToken, getAllTasks);
-router.get('/:id', verifyToken, getTask);
-router.post('/', verifyToken, createTask);
-router.put('/:id', verifyToken, updateTask);
-router.delete('/:id', verifyToken, deleteTask);
+router.use(authenticate);
+router.get('/', getTasks);
+router.post('/', createTask);
+router.get('/:id', getTaskById); 
+router.put('/:id', updateTask);
+router.delete('/:id', deleteTask);
 
 export default router;

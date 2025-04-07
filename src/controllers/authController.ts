@@ -34,9 +34,17 @@ export const login = async (req: Request, res: Response) => {
 export const register = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
 
-  const hashedPassword = bcrypt.hashSync(password, 10);
-
   try {
+    const existingUser = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (existingUser) {
+      return res.status(400).json({ error: 'E-mail já está em uso' });
+    }
+
+    const hashedPassword = bcrypt.hashSync(password, 10);
+
     const user = await prisma.user.create({
       data: {
         username,
@@ -51,6 +59,6 @@ export const register = async (req: Request, res: Response) => {
 
     res.status(201).json({ token });
   } catch (error: any) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: 'Erro ao registrar usuário' });
   }
 };
