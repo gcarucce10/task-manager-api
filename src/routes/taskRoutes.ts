@@ -7,11 +7,11 @@ import {
   deleteTask,
   getTaskById,
 } from '../controllers/taskController';
-import { authenticate } from '../middleware/authMiddleware';
+import { authenticateToken } from '../middlewares/authMiddleware';
 
 const router = express.Router();
 
-router.use(authenticate);
+router.use(authenticateToken);
 router.get('/', getTasks);
 router.post('/', createTask);
 router.get('/:id', getTaskById); 

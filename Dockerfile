@@ -12,7 +12,6 @@ RUN npx prisma generate
 RUN npm run build
 
 # Etapa final
-# Etapa final
 FROM node:18-alpine
 
 WORKDIR /app
